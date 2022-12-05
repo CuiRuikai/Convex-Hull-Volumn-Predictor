@@ -210,7 +210,7 @@ def validate(base_model, test_dataloader, epoch, val_writer, args, config, logge
     msg = ''
     msg += 'Overall\t\t'
     for value in test_metrics.avg():
-        msg += '%.3f \t' % value
+        msg += '%.8f \t' % value
     print_log(msg, logger=logger)
 
     # Add testing results to TensorBoard

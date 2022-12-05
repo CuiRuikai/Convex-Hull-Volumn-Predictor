@@ -8,7 +8,7 @@ optimizer : {
 scheduler: {
   type: LambdaLR,
   kwargs: {
-  decay_step: 20,
+  decay_step: 10,
   lr_decay: 0.9,
   lowest_decay: 0.02  # min lr = lowest_decay * lr
 }}
@@ -24,11 +24,11 @@ bnmscheduler: {
 
 dataset : {
   train : { _base_: cfgs/dataset_configs/EPN3D.yaml,
-            others: {subset: 'train', class_choice: ['car']}},
+            others: {subset: 'train', class_choice: ['table']}},
   val : { _base_: cfgs/dataset_configs/EPN3D.yaml,
-            others: {subset: 'test', class_choice: ['car']}},
+            others: {subset: 'test', class_choice: ['table']}},
   test : { _base_: cfgs/dataset_configs/EPN3D.yaml,
-            others: {subset: 'test', class_choice: ['car']}}}
+            others: {subset: 'test', class_choice: ['table']}}}
 
 model : {
   NAME: Predictor,
@@ -38,6 +38,6 @@ model : {
 
 total_bs : 32
 step_per_update : 1
-max_epoch : 300
+max_epoch : 50
 
-consider_metric: CDL2
+consider_metric: MSE
